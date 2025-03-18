@@ -13,6 +13,7 @@ namespace ChartApp
         public ChartApp()
         {
             InitializeComponent();
+            DrawGraph();
         }
 
         private void LoadData()
@@ -25,7 +26,7 @@ namespace ChartApp
                 lblDisplay.Text += _events[i].ToString() + "\n";
             }
 
-            DrawGraph();
+            
         }
 
         private void DrawGraph()
@@ -70,7 +71,7 @@ namespace ChartApp
                     using (StreamReader reader = new StreamReader(fileStream))
                     using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                     {
-                        _events = csv.GetRecords<WeatherEvent>().ToList;
+                        _events = csv.GetRecords<WeatherEvent>().ToList();
                         LoadData();
                     }
 
